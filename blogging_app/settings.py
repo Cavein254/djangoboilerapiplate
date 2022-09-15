@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
+    "drf_spectacular",
     # Local
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
@@ -59,6 +60,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 MIDDLEWARE = [
@@ -147,6 +149,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# Additional user custom settings
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
@@ -161,3 +166,11 @@ CSRF_TRUSTED_ORIGINS =["http://localhost:3000"]
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 SITE_ID = 1
+
+SPECTACULAR_SETTINGS = {
+    "TITLE":"Blog API Project",
+    "DESCRIPTION":"A simple blog to learn",
+    "VERSION":"1.0.0",
+}
+
+
